@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>مدرسة النهضة الإسلامية الخاصة</title>
+    <!-- استيراد خط القاهرة من جوجل -->
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* إعدادات عامة */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Cairo', sans-serif;
+        }
+
+        body {
+            background-color: #f9fbfb;
+            color: #333;
+        }
+
+        /* شريط التنقل (Navbar) */
+        header {
+            background-color: #0b3c29; /* أخضر غامق طابع إسلامي/تعليمي */
+            color: #fff;
+            padding: 15px 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: #d4af37; /* لون ذهبي خفيف */
+            letter-spacing: 1px;
+        }
+
+        .logo span {
+            color: #fff;
+            font-size: 16px;
+            display: block;
+            font-weight: 300;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+        }
+
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 16px;
+            transition: color 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: #d4af37;
+        }
+
+        /* القسم الرئيسي (Hero Section) */
+        .hero {
+            background: linear-gradient(rgba(11, 60, 41, 0.8), rgba(11, 60, 41, 0.8)), url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&w=1350&q=80') no-repeat center center/cover;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: #fff;
+            padding: 0 20px;
+            margin-top: 60px;
+        }
+
+        .hero h1 {
+            font-size: 44px;
+            margin-bottom: 15px;
+            color: #d4af37;
+        }
+
+        .hero p {
+            font-size: 20px;
+            margin-bottom: 30px;
+            max-width: 700px;
+            line-height: 1.6;
+        }
+
+        .btn {
+            background-color: #d4af37;
+            color: #0b3c29;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 25px;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            text-decoration: none;
+            transition: background 0.3s, color 0.3s;
+        }
+
+        .btn:hover {
+            background-color: #fff;
+            color: #0b3c29;
+        }
+
+        /* قسم عن المدرسة */
+        .about {
+            padding: 80px 20px;
+            text-align: center;
+            background-color: #fff;
+        }
+
+        .about h2 {
+            font-size: 34px;
+            color: #0b3c29;
+            margin-bottom: 20px;
+        }
+
+        .about p {
+            max-width: 800px;
+            margin: 0 auto;
+            font-size: 18px;
+            color: #555;
+            line-height: 1.8;
+        }
+
+        /* قسم المراحل والأقسام */
+        .sections {
+            padding: 80px 20px;
+            background-color: #f4f7f6;
+            text-align: center;
+        }
+
+        .sections h2 {
+            font-size: 34px;
+            color: #0b3c29;
+            margin-bottom: 40px;
+        }
+
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .card {
+            background: #fff;
+            border-radius: 10px;
+            padding: 30px 20px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+            border-top: 4px solid #0b3c29;
+            transition: transform 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        .card h3 {
+            color: #0b3c29;
+            font-size: 22px;
+            margin-bottom: 15px;
+        }
+
+        .card p {
+            color: #666;
+            font-size: 15px;
+            line-height: 1.6;
+        }
+
+        /* قسم الفروع */
+        .branches {
+            padding: 80px 20px;
+            background-color: #fff;
+            text-align: center;
+        }
+
+        .branches h2 {
+            font-size: 34px;
+            color: #0b3c29;
+            margin-bottom: 40px;
+        }
+
+        .branch-box {
+            display: inline-block;
+            background: #f9fbfb;
+            border: 1px solid #ddd;
+            padding: 20px;
+            margin: 10px;
+            border-radius: 8px;
+            width: 300px;
+            text-align: right;
+            vertical-align: top;
+        }
+
+        .branch-box h4 {
+            color: #0b3c29;
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+
+        .branch-box p {
+            color: #555;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+
+        /* قسم تواصل معنا */
+        .contact {
+            padding: 60px 20px;
+            background-color: #0b3c29;
+            color: #fff;
+            text-align: center;
+        }
+
+        .contact h2 {
+            font-size: 32px;
+            margin-bottom: 15px;
+            color: #d4af37;
+        }
+
+        .contact p {
+            font-size: 16px;
+            margin-bottom: 8px;
+        }
+
+        /* التذييل (Footer) */
+        footer {
+            background-color: #062419;
+            color: #aaa;
+            text-align: center;
+            padding: 20px;
+            font-size: 14px;
+        }
+
+        /* التجاوب مع الجوال */
+        @media (max-width: 768px) {
+            header {
+                padding: 15px 20px;
+                flex-direction: column;
+                gap: 10px;
+            }
+            nav ul {
+                gap: 15px;
+            }
+            .hero h1 {
+                font-size: 32px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- شريط التنقل -->
+    <header>
+        <div class="logo">
+            مدرسة النهضة الإسلامية
+            <span>القسم الخاص (عربي ولغات)</span>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#home">الرئيسية</a></li>
+                <li><a href="#about">عن المدرسة</a></li>
+                <li><a href="#stages">المراحل التعليمية</a></li>
+                <li><a href="#branches">فروعنا</a></li>
+                <li><a href="#contact">اتصل بنا</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- القسم الرئيسي -->
+    <section id="home" class="hero">
+        <h1>صرح تعليمي يجمع بين الأصالة والتميز</h1>
+        <p>نحرص على بناء جيل واعد واعٍ بدينه وعلمه، مزود بأحدث أساليب التعليم والأنشطة التربوية المتكاملة.</p>
+        <a href="#about" class="btn">تعرف علينا أكثر</a>
+    </section>
+
+    <!-- قسم عن المدرسة -->
+    <section id="about" class="about">
+        <h2>كلمة المنهضة الإسلامية</h2>
+        <p>تعتبر مدرسة النهضة الإسلامية الخاصة من المؤسسات التعليمية العريقة التي تهدف إلى تقديم خدمة تعليمية متميزة تجمع بين المناهج الحديثة والقيم التربوية والأخلاقية السامية. نؤمن بأن الطالب هو محور العملية التعليمية، لذا نسعى دائماً لتوفير بيئة تربوية محفزة على الإبداع والتفوق.</p>
+    </section>
+
+    <!-- قسم المراحل التعليمية -->
+    <section id="stages" class="sections">
+        <h2>المراحل التعليمية والأقسام</h2>
+        <div class="grid-container">
+            <div class="card">
+                <h3>رياض الأطفال (KG)</h3>
+                <p>بيئة آمنة وممتعة لتنمية مهارات الأطفال التأسيسية وسلوكياتهم بطرق تفاعلية حديثة.</p>
+            </div>
+            <div class="card">
+                <h3>المرحلة الابتدائية</h3>
+                <p>تأسيس قوي في اللغات والعلوم والرياضيات مع غرس القيم الإسلامية والأخلاق القويم.</p>
+            </div>
+            <div class="card">
+                <h3>المرحلة الإعدادية والثانوية</h3>
+                <p>إعداد الطلاب لاجتياز المراحل الحاسمة بنجاح وتفوق، وتطوير التفكير النقدي والإبداعي لديهم.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- قسم الفروع -->
+    <section id="branches" class="branches">
+        <h2>فروعنا بمحافظة القاهرة (إدارة شبرا التعليمية)</h2>
+        
+        <div class="branch-box">
+            <h4>فرع أحمد حلمي</h4>
+            <p><strong>العنوان:</strong> 151 شارع أحمد حلمي، الترعة البولاقية، شبرا، القاهرة.</p>
+            <p style="margin-top: 8px; color: #0b3c29;">قسم: (عربي / لغات)</p>
+        </div>
+
+        <div class="branch-box">
+            <h4>فرع شبرا البلد (الشيخ خالد)</h4>
+            <p><strong>العنوان:</strong> 58 شارع الشيخ خالد، بالقرب من محطة مترو كلية الزراعة ومستشفى الناس.</p>
+            <p style="margin-top: 8px; color: #0b3c29;">قسم: (رياض أطفال وتأسيس)</p>
+        </div>
+    </section>
+
+    <!-- قسم تواصل معنا -->
+    <section id="contact" class="contact">
+        <h2>للتواصل والاستعلام</h2>
+        <p>يسعدنا تلقي استفساراتكم وطلبات الالتحاق بالمدرسة</p>
+        <p>إدارة شبرا التعليمية - محافظة القاهرة</p>
+        <br>
+        <p>هاتف المدرسة: متوفر عبر إدارة الفرع أو صفحة المدرسة الرسمية</p>
+    </section>
+
+    <!-- التذييل -->
+    <footer>
+        <p>جميع الحقوق محفوظة &copy; 2026 مدرسة النهضة الإسلامية الخاصة</p>
+    </footer>
+
+</body>
+</html>
